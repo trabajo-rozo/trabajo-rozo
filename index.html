@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo rozo </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>palabras encadenadas</h1>
+    <div id="seccion-jugador">
+        <h2>Selecciona el numero de jugadores</h2>
+        <button onclick="Start-Game(1)">1 Jugador</button>
+        <button onclick="Start-Game(2)">2 Jugadores</button>
+        <button onclick="Start-Game(3)">3 Jugadores</button>
+        <button onclick="Start-Game(4)">4 Jugadores</button>
+    </div>
+
+    <div id="area-juego">
+        <h2 id="player-turn"></h2>
+        <p>Letra Asignada: <span id="letra-random"></span></p>
+        <input type="text" id="palabras" placeholder="Escribe una palabra">
+        <button onclick="Submitpalabra()"> Agregar palabra</button>
+        <p id="tiempo">Tiempo restante: <span id="cuenta">1</span>minuto</p>
+        <ul id="lista-palabras"></ul>
+        <button id="siguiente-turno" onclick="nextTurn()">Siguiente Turno</button>
+       <div id="results"></div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+
+</body>
+
+</html>
