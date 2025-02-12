@@ -42,3 +42,33 @@ function startTimer() {
         }
     }, 1000);
 }
+function addWord() {
+    const wordInput = document.getElementById('wordInput');
+    const word = wordInput.value.trim().toUpperCase();
+
+    if (word && word.startsWith(currentLetter) && !words.has(word)) {
+        words.add(word);
+        playerWords[currentPlayerIndex].push(word); // Almacena la palabra en el jugador actual
+        document.getElementById('wordList').innerHTML += `<div>${word}</div>`;
+        playerScores[currentPlayerIndex]++; // Incrementa el puntaje del jugador actual
+        wordInput.value = '';
+    } else {
+        alert('Palabra inválida o repetida. Asegúrate de que comience con la letra correcta y no esté repetida.');
+    }
+}
+
+function endTurn() {
+    clearInterval(timer);
+    currentPlayerIndex++;
+    if (currentPlayerIndex >= players.length) {
+        currentPlayerIndex = 0;
+        declareWinner();
+    } else {
+        document.getElementById('currentPlayer').innerText = players[currentPlayerIndex];
+        currentLetter = getRandomLetter();
+        document.getElementById('currentLetter').innerText = currentLetter;
+        document.getElementById('wordList').innerHTML = '';
+        words.clear();
+        startTimer();
+    }
+}
