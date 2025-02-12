@@ -12,15 +12,16 @@
     <h1>palabras encadenadas</h1>
     <div id="seccion-jugador">
         <h2>Selecciona el numero de jugadores</h2>
-        <button onclick="Start-Game(1)">1 Jugador</button>
-        <button onclick="Start-Game(2)">2 Jugadores</button>
-        <button onclick="Start-Game(3)">3 Jugadores</button>
-        <button onclick="Start-Game(4)">4 Jugadores</button>
+        <button onclick="startGame(1)">1 Jugador</button>
+        <button onclick="startGame(2)">2 Jugadores</button>
+        <button onclick="startGame(3)">3 Jugadores</button>
+        <button onclick="startGame(4)">4 Jugadores</button>
     </div>
 
     <div id="area-juego">
         <h2 id="player-turn"></h2>
         <p>Letra Asignada: <span id="letra-random"></span></p>
+        <p>Tiempo restante: <span id="contador">60</span> segundos (1 minuto)</p>
         <input type="text" id="palabras" placeholder="Escribe una palabra">
         <button onclick="Submitpalabra()"> Agregar palabra</button>
         <p id="tiempo">Tiempo restante: <span id="cuenta">1</span>minuto</p>

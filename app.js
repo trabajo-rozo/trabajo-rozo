@@ -1,11 +1,15 @@
-let elementoSegundos = document.getElementById("tiempoPredeterminado");
-let elementoAlarma = document.getElementById("Alarma");
+let jugadores = 0;
+let jugadorActual =0;
+let palabras = {};
+let tiempo = 0;
 
-function comenzarTiempo(){
-    setTimeout(tiempoPredeterminado,1000 * 1)
-}
-
-function tiempoCumplido(){
-    elementoAlarma.textContent("Se termino el tiempo")
+function startGame(playerCount){
+    jugadores = playerCount;
+    jugadorActual = 1;
+    palabras = {};
     
+    for(let i = 1; i <= jugadores; i++)   palabras[1] = [];
+    document.getElementById("seccion-jugador");
+    document.getElementById("area-juego");
+    startTurn();
 }
