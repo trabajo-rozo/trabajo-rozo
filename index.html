@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabajo rozo </title>
+    <title>Juego de Palabras</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>palabras encadenadas</h1>
-    <div id="seccion-jugador">
-        <h2>Selecciona el numero de jugadores</h2>
-        <button onclick="startGame(1)">1 Jugador</button>
-        <button onclick="startGame(2)">2 Jugadores</button>
-        <button onclick="startGame(3)">3 Jugadores</button>
-        <button onclick="startGame(4)">4 Jugadores</button>
-    </div>
 
-    <div id="area-juego">
-        <h2 id="player-turn"></h2>
-        <p>Letra Asignada: <span id="letra-random"></span></p>
-        <p>Tiempo restante: <span id="contador">60</span> segundos (1 minuto)</p>
-        <input type="text" id="palabras" placeholder="Escribe una palabra">
-        <button onclick="Submitpalabra()"> Agregar palabra</button>
-        <p id="tiempo">Tiempo restante: <span id="cuenta">1</span>minuto</p>
-        <ul id="lista-palabras"></ul>
-        <button id="siguiente-turno" onclick="nextTurn()">Siguiente Turno</button>
-       <div id="results"></div>
-    </div>
-    <script type="module" src="app.js"></script>
+<h1>Juego de Palabras</h1>
+<label for="numPlayers">Selecciona el número de jugadores:</label>
+<select id="numPlayers">
+    <option value="1">1 Jugador</option>
+    <option value="2">2 Jugadores</option>
+    <option value="3">3 Jugadores</option>
+    <option value="4">4 Jugadores</option>
+</select>
+<button id="startButton">Iniciar Juego</button>
 
+<div id="gameArea" style="display:none;">
+    <h2 id="currentPlayer"></h2>
+    <h3>Letra: <span id="currentLetter"></span></h3>
+    <input type="text" id="wordInput" placeholder="Ingresa una palabra" />
+    <button onclick="addWord()">Agregar Palabra</button>
+    <div id="timer"></div>
+    <div id="wordList"></div>
+    <h3 id="winner"></h3>
+</div>
 
+<div id="finalResults" style="display:none;">
+    <h2>Resultados Finales</h2>
+    <div id="results"></div>
+</div>
+
+<script src="app.js"></script>
 </body>
-
 </html>
