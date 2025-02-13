@@ -72,3 +72,21 @@ function endTurn() {
         startTimer();
     }
 }
+
+function declareWinner() {
+    const maxScore = Math.max(...playerScores);
+    const winners = players.filter((_, index) => playerScores[index] === maxScore);
+    document.getElementById('winner').innerText = `¡El ganador${winners.length > 1 ? 'es' : 'es'} ${winners.join(', ')}!`;
+    document.getElementById('gameArea').style.display = 'none';
+    showFinalResults();
+}
+
+function showFinalResults() {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
+    players.forEach((player, index) => {
+        resultsDiv.innerHTML += `<h4>${player} (Puntaje: ${playerScores[index]})</h4>`;
+        resultsDiv.innerHTML += `<p>Palabras: ${playerWords[index].join(', ') || 'Ninguna'}</p>`;
+    });
+    document.getElementById('finalResults').style.display = 'block';
+}
