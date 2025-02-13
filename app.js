@@ -5,7 +5,7 @@ let words = new Set();
 let timer;
 let timeLeft = 60;
 let playerScores = [];
-let playerWords = []; 
+let playerWords = [];
 
 document.getElementById('startButton').onclick = startGame;
 
@@ -29,6 +29,7 @@ function getRandomLetter() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return letters.charAt(Math.floor(Math.random() * letters.length));
 }
+
 function startTimer() {
     timeLeft = 60;
     document.getElementById('timer').innerText = `Tiempo restante: ${timeLeft} segundos`;
@@ -42,6 +43,7 @@ function startTimer() {
         }
     }, 1000);
 }
+
 function addWord() {
     const wordInput = document.getElementById('wordInput');
     const word = wordInput.value.trim().toUpperCase();
@@ -75,18 +77,22 @@ function endTurn() {
 
 function declareWinner() {
     const maxScore = Math.max(...playerScores);
-    const winners = players.filter((_, index) => playerScores[index] === maxScore);
-    document.getElementById('winner').innerText = `¡El ganador${winners.length > 1 ? 'es' : 'es'} ${winners.join(', ')}!`;
+    
+    // Buscar el jugador con más palabras
+    const winnerIndex = playerScores.indexOf(maxScore);
+    const winnerPlayer = players[winnerIndex];
+    const winnerWords = playerWords[winnerIndex];
+
+    // Mostrar solo al jugador con más palabras y su lista de palabras
+    document.getElementById('winner').innerText = `¡El ganador es ${winnerPlayer}!`;
     document.getElementById('gameArea').style.display = 'none';
-    showFinalResults();
+    showFinalResults(winnerPlayer, winnerWords);
 }
 
-function showFinalResults() {
+function showFinalResults(winnerPlayer, winnerWords) {
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
-    players.forEach((player, index) => {
-        resultsDiv.innerHTML += `<h4>${player} (Puntaje: ${playerScores[index]})</h4>`;
-        resultsDiv.innerHTML += `<p>Palabras: ${playerWords[index].join(', ') || 'Ninguna'}</p>`;
-    });
+    resultsDiv.innerHTML += `<h4>${winnerPlayer} (Puntaje: ${winnerWords.length})</h4>`;
+    resultsDiv.innerHTML += `<p>Palabras: ${winnerWords.join(', ') || 'Ninguna'}</p>`;
     document.getElementById('finalResults').style.display = 'block';
 }
