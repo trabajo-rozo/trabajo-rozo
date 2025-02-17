@@ -9,11 +9,12 @@ let playerWords = [];
 
 document.getElementById('startButton').onclick = startGame;
 
+
 function startGame() {
     const numPlayers = parseInt(document.getElementById('numPlayers').value);
     players = Array.from({ length: numPlayers }, (_, i) => `Jugador ${i + 1}`);
-    playerScores = Array(numPlayers).fill(0); // Inicializa los puntajes de los jugadores
-    playerWords = Array.from({ length: numPlayers }, () => []); // Inicializa las palabras de los jugadores
+    playerScores = Array(numPlayers).fill(0); 
+    playerWords = Array.from({ length: numPlayers }, () => []); 
     currentPlayerIndex = 0;
     words.clear();
     document.getElementById('wordList').innerHTML = '';
@@ -23,6 +24,8 @@ function startGame() {
     currentLetter = getRandomLetter();
     document.getElementById('currentLetter').innerText = currentLetter;
     startTimer();
+
+
 }
 
 function getRandomLetter() {
@@ -50,9 +53,9 @@ function addWord() {
 
     if (word && word.startsWith(currentLetter) && !words.has(word)) {
         words.add(word);
-        playerWords[currentPlayerIndex].push(word); // Almacena la palabra en el jugador actual
+        playerWords[currentPlayerIndex].push(word); 
         document.getElementById('wordList').innerHTML += `<div>${word}</div>`;
-        playerScores[currentPlayerIndex]++; // Incrementa el puntaje del jugador actual
+        playerScores[currentPlayerIndex]++; 
         wordInput.value = '';
     } else {
         alert('Palabra inválida o repetida. Asegúrate de que comience con la letra correcta y no esté repetida.');
@@ -78,12 +81,10 @@ function endTurn() {
 function declareWinner() {
     const maxScore = Math.max(...playerScores);
     
-    // Buscar el jugador con más palabras
     const winnerIndex = playerScores.indexOf(maxScore);
     const winnerPlayer = players[winnerIndex];
     const winnerWords = playerWords[winnerIndex];
 
-    // Mostrar solo al jugador con más palabras y su lista de palabras
     document.getElementById('winner').innerText = `¡El ganador es ${winnerPlayer}!`;
     document.getElementById('gameArea').style.display = 'none';
     showFinalResults(winnerPlayer, winnerWords);

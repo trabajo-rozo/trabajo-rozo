@@ -3,26 +3,37 @@ body {
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     margin: 0;
-    padding: 20px;
+    padding: 10px; /* Reducir el padding para móviles */
     color: #fff;
+    background-color: bisque;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1, h2, h3 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+    margin: 0;
+    font-size: 22px; /* Tamaño de fuente más pequeño en móviles */
 }
 
 .tenor-gif-embed {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto; /* Centrado horizontalmente */
-    max-width: 300px; /* Ajusta el tamaño si es necesario */
+    margin: 20px auto;
+    max-width: 200px; /* Reducir el tamaño de la imagen en móviles */
 }
 
 .btn {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     justify-content: center;
+    margin-top: 10px;
 }
 
 @keyframes gradientAnimation {
@@ -33,111 +44,179 @@ h1, h2, h3 {
 
 #gameArea {
     animation: fadeIn 1s ease-in;
+    padding: 10px; /* Añadir algo de espacio en dispositivos pequeños */
 }
 
 #timer {
-    font-size: 24px;
+    font-size: 18px; /* Reducir tamaño del timer en móvil */
     color: #ff0000;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 #wordList {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 320px; /* Asegurar que el contenedor no se sobrepase en dispositivos pequeños */
+}
+
+#wordList:hover {
     background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    transition: background-color 0.3s ease, transform 0.2s;
+    font-size: 16px; /* Ajustar el tamaño de fuente de los botones */
+    padding: 10px 20px;
 }
 
 button:hover {
     background-color: #c00a0a;
+    transform: scale(1.05);
 }
 
-
-
-#link{
+#link {
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     background: #fff;
     border-radius: 20px;
     color: black;
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-body{
-    background-color: bisque;
-    height: 100vh;
-    width: 100%;
+#link:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #f1f1f1;
+}
+
+#cart {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+        flex-direction: column;
+        align-items: start;
+        justify-content: flex-start;
+        width: 90%;
+        height: 80%;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, #007BFF, #FF0000);
+        margin-top: 20px;
 }
 
-#cart{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 80%;
-    height: 90%;
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 20px 20px black;
-    background: linear-gradient(135deg, #007BFF, #FF0000);
-}
-
-.teclado{
-    width: 70%;
+.teclado {
+    width: 90%; /* Asegurar que el teclado sea más pequeño en móviles */
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 10px 5px black;
+    box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
     background-color: #007BFF;
 }
 
-#numPlayers{
+#numPlayers, #wordInput {
     border-radius: 20px;
-    height: 25px;
+    height: 35px; /* Ajustar la altura para hacerla más cómoda */
+    padding: 8px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 280px; /* Limitar el ancho en móviles */
 }
 
-Button{
+Button {
     border-radius: 20px;
-    height: 40px;
-    width: 120px;
+    height: 55px;
+    width: 130px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
 }
 
-#wordInput{
-    border-radius: 20px;
-    height: 25px;
+Button:hover {
+    transform: scale(1.05);
 }
 
-@media (max-width: 360px){
-    #finalResults{
-        width: 70%;
+@media (max-width: 600px) {
+    h1, h2, h3 {
+        font-size: 20px; /* Reducir aún más en pantallas más pequeñas */
     }
 
-    body{
-        padding: 0;
-        width: 340px;
+    #wordList {
+        padding: 10px;
+        max-width: 100%;
     }
 
-    button{
-        width: 110px;
-        height: 35px;
+    #cart {
+        width: 90%;
+        height: 81%;
+        padding: 10px;
     }
 
-    #timer,#currentPlayer,h3{
-        font-size: 19px;
+    .teclado {
+        width: 85%;
     }
 
-    #wordList{
-        width: 80%;
+    #link {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 
-    #gameArea{
+    Button {
+        width: 100%;
+        height: 45px; /* Asegurar que los botones se ajusten bien al tamaño */
+    }
+
+    #gameArea {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
     }
 }
 
+@media (max-width: 360px) {
+    body {
+        padding: 0;
+        width: 100%;
+        font-size: 14px; /* Reducir el tamaño de fuente para pantallas muy pequeñas */
+    }
+
+    button {
+        width: 100%;
+        height: 40px;
+    }
+
+    #timer, #currentPlayer, h3 {
+        font-size: 16px;
+    }
+
+    #wordList {
+        width: 90%;
+    }
+
+    #gameArea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    #cart {
+        width: 90%;
+        height: 81%;
+        padding: 10px;
+    }
+
+    .teclado {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 90%;
+        height: 30%;
+        padding: 15px;
+    }
+}
